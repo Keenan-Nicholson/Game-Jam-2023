@@ -1,0 +1,31 @@
+{"frames": {
+
+"fox1.png":
+{
+	"frame": {"x":1,"y":1,"w":50,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":9,"w":50,"h":40},
+	"sourceSize": {"w":50,"h":50}
+},
+"fox2.png":
+{
+	"frame": {"x":53,"y":1,"w":50,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":9,"w":50,"h":40},
+	"sourceSize": {"w":50,"h":50}
+}},
+"animations": {
+	"fox": ["fox1.png","fox2.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "fox.png",
+	"format": "RGBA8888",
+	"size": {"w":104,"h":42},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6cd2a6806d7f6ff17691e6f536302eeb:34494ee3bb0e5a1bf6c5e584854b8f9c:7a63b402a041f768da36d40249078b3b$"
+}
+}

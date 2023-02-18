@@ -1,0 +1,31 @@
+{"frames": {
+
+"bee1.png":
+{
+	"frame": {"x":1,"y":1,"w":43,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":7,"w":43,"h":49},
+	"sourceSize": {"w":60,"h":60}
+},
+"bee2.png":
+{
+	"frame": {"x":1,"y":52,"w":43,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":8,"w":43,"h":48},
+	"sourceSize": {"w":60,"h":60}
+}},
+"animations": {
+	"bee": ["bee1.png","bee2.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "bee.png",
+	"format": "RGBA8888",
+	"size": {"w":45,"h":101},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:2be342d006963b323c8c608de36ad9e2:1cb8307719edbd9cae0916f1eefa4ec0:1370451075ca5a23531a09c50c3033e0$"
+}
+}

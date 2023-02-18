@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@pixi/sound": "^5.0.0"
+  }
+}

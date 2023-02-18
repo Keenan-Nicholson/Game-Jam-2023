@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quackin' Up!</title>
     <script src="js/pixi.min.js"></script>
+    <script src="https://unpkg.com/@pixi/sound/dist/pixi-sound.js"></script>
     <script>
       const WIDTH = window.innerWidth * 0.8;
       const HEIGHT = window.innerHeight * 0.8;
@@ -25,6 +26,14 @@
 
         document.body.appendChild(app.view);
 
+        // music
+        PIXI.sound.add("my-sound", {
+          url: "music/Duck_Game_Song.mp3",
+          loop: true,
+        });
+        PIXI.sound.play("my-sound");
+        PIXI.sound.volume("my-sound", 0.1);
+
         // load background
         background = PIXI.Sprite.from("images/background.jpg");
         background.anchor.set(0.5);
@@ -35,17 +44,8 @@
         background.height = HEIGHT;
         app.stage.addChild(background);
 
-        // Duck sprite
-        duck = PIXI.Sprite.from("images/duck.png");
-
-        duck.anchor.set(0.5);
-        duck.x = app.view.width / 2;
-        duck.y = app.view.height - 100;
-
-        app.stage.addChild(duck);
-
         // Fox sprite
-        fox = PIXI.Sprite.from("images/fox.png");
+        fox = PIXI.Sprite.from("images/fox1.png");
 
         fox.anchor.set(0.5);
         fox.x = app.view.width / 1.15;
@@ -54,6 +54,14 @@
         fox.width = 250;
         fox.height = 250;
         app.stage.addChild(fox);
+
+        // Duck sprite
+        duck = PIXI.Sprite.from("images/duck.png");
+        duck.anchor.set(0.5);
+        duck.x = app.view.width / 2;
+        duck.y = app.view.height - 100;
+
+        app.stage.addChild(duck);
 
         // Movement event handlers
         window.addEventListener("keydown", keysDown);
@@ -77,7 +85,6 @@
               duck.x += 5;
             }
           }
-
           // left
           if (keys["37"]) {
             duck.scale.x = -1;
@@ -85,9 +92,7 @@
               duck.x -= 5;
             }
           }
-
           // jump
-
           if (keys["32"]) {
             duck.y = HEIGHT / 1.25;
           }

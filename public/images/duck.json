@@ -1,0 +1,30 @@
+{
+  "frames": {
+    "duck1.png": {
+      "frame": { "x": 24, "y": 1, "w": 20, "h": 23 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 22, "y": 19, "w": 20, "h": 23 },
+      "sourceSize": { "w": 60, "h": 60 }
+    },
+    "duck2.png": {
+      "frame": { "x": 1, "y": 1, "w": 21, "h": 23 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 21, "y": 19, "w": 21, "h": 23 },
+      "sourceSize": { "w": 60, "h": 60 }
+    }
+  },
+  "animations": {
+    "duck": ["images/duck1.png", "images/duck2.png"]
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.1",
+    "image": "duck.png",
+    "format": "RGBA8888",
+    "size": { "w": 45, "h": 25 },
+    "scale": "1",
+    "smartupdate": "$TexturePacker:SmartUpdate:1cb5992b4d48ef092df9b3755d1131b2:aa0e6f961c13cacedc1b717593bc9c26:fa8e281a63abe284ebc4243ea16e3694$"
+  }
+}

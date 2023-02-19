@@ -16,7 +16,7 @@
     }
   },
   "animations": {
-    "fox": ["fox1.png", "fox2.png"]
+    "fox": ["images/fox1.png", "images/fox2.png"]
   },
   "meta": {
     "app": "https://www.codeandweb.com/texturepacker",

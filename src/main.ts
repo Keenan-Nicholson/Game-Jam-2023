@@ -14,7 +14,7 @@ window.addEventListener("load", async () => {
     backgroundColor: 0xffffff,
   });
 
-  await Assets.load(["images/duck.json"]);
+  await Assets.load(["images/duck.json", "images/fox.json"]);
 
   PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
@@ -35,33 +35,45 @@ window.addEventListener("load", async () => {
   background.height = HEIGHT;
   app.stage.addChild(background);
 
-  const fox = PIXI.Sprite.from("images/fox1.png");
+  const egg = PIXI.Sprite.from("images/egg.png");
+  egg.anchor.set(0.5);
+  egg.x =
+    Math.random() * (app.view.width / 1.1 - app.view.width / 12) -
+    app.view.width / 12;
+  egg.y = app.view.height / 1.07;
+  egg.scale.x = 3;
+  egg.scale.y = 3;
+  app.stage.addChild(egg);
 
+  // animate and stage fox
+  const animateFox = Assets.cache.get("images/fox.json").animations;
+  const fox = PIXI.AnimatedSprite.fromFrames(animateFox["fox"]);
   fox.anchor.set(0.5);
-  fox.x = app.view.width / 1.15;
-  fox.y = app.view.height - 160;
-
-  fox.width = 250;
-  fox.height = 250;
+  fox.x = Math.random() > 0.5 ? app.view.width + 200 : -200;
+  fox.y = app.view.height / 1.152;
+  fox.scale.x = 5;
+  fox.scale.y = 5;
+  fox.animationSpeed = 1 / 6;
+  fox.play();
   app.stage.addChild(fox);
 
-  const animations = Assets.cache.get("images/duck.json").animations;
-  const duck = PIXI.AnimatedSprite.fromFrames(animations["duck"]);
+  // animate and stage fox
+  const animateDuck = Assets.cache.get("images/duck.json").animations;
+  const duck = PIXI.AnimatedSprite.fromFrames(animateDuck["duck"]);
   duck.anchor.set(0.5);
   duck.x = app.view.width / 2;
-  duck.y = app.view.height - 100;
-  duck.scale.x = 4;
-  duck.scale.y = 4;
+  duck.y = app.view.height / 1.09;
+  duck.scale.x = 5;
+  duck.scale.y = 5;
+  duck.animationSpeed = 1 / 6;
   duck.play();
-
-  /* const duck = PIXI.Sprite.from("images/duck.png"); */
-
   app.stage.addChild(duck);
 
   const pressing = {
     right: false,
     left: false,
     jump: false,
+    hit: false,
   };
 
   const handleKey = (code: string, state: boolean) => {
@@ -72,8 +84,11 @@ window.addEventListener("load", async () => {
       case "ArrowLeft":
         pressing.left = state;
         break;
-      case "Space":
+      case "ArrowUp":
         pressing.jump = state;
+        break;
+      case "Space":
+        pressing.hit = state;
         break;
     }
   };
@@ -83,23 +98,45 @@ window.addEventListener("load", async () => {
 
   app.ticker.add(() => {
     if (pressing.right) {
-      duck.scale.x = 4;
+      duck.scale.x = 5;
       if (duck.x < app.view.width - 55) {
         duck.x += 5;
       }
     }
 
     if (pressing.left) {
-      duck.scale.x = -4;
+      duck.scale.x = -5;
       if (duck.x > 55) {
         duck.x -= 5;
       }
     }
 
     if (pressing.jump) {
-      duck.y = HEIGHT / 1.25;
+      duck.y = HEIGHT / 1.35;
     } else {
-      duck.y = app.view.height - 100;
+      duck.y = app.view.height / 1.09;
+    }
+
+    if (
+      duck.x < fox.x + 75 &&
+      duck.x > fox.x - 75 &&
+      pressing.hit &&
+      !pressing.jump
+    ) {
+      if (fox.x > duck.x) {
+        fox.x += 200;
+      } else {
+        fox.x -= 200;
+      }
+    }
+
+    if (fox.x > egg.x) {
+      fox.scale.x = 5;
+      fox.x -= 3;
+    }
+    if (fox.x < egg.x) {
+      fox.scale.x = -5;
+      fox.x += 3;
     }
   });
 });
